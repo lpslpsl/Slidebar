@@ -2,6 +2,7 @@ package com.example.lps.slidebar;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.item, null);
+        View view = LayoutInflater.from(context).inflate( R.layout.item, null);
         return new ViewHolder(view);
     }
 
@@ -34,7 +35,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         holder.name.setText(list.get(position).getName());
         holder.letter.setText(list.get(position).getTag());
         if (position == 0) {
-            holder.letter.setVisibility(View.VISIBLE);
+            holder.letter.setVisibility(View.GONE);
         } else if (list.get(position - 1).getTag().equals(list.get(position).getTag())) {
             holder.letter.setVisibility(View.GONE);
         }else {

@@ -39,23 +39,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-    inittestData();
+        inittestData();
         initSouesData();
         recyclerView.setAdapter(new RecycleAdapter(this, mSouseDatas));
         indexBar.setHintTextView(hintText)
-        .setLayoutmanager(mLayoutManager)
-        .setSouseData(mSouseDatas);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
+                .setLayoutmanager(mLayoutManager)
+                .setSouseData(mSouseDatas);
+        recyclerView.addItemDecoration(new TitleItemDecoration(mSouseDatas));
 
     }
 
