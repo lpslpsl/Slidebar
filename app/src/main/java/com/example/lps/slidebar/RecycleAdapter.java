@@ -33,6 +33,13 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getName());
         holder.letter.setText(list.get(position).getTag());
+        if (position == 0) {
+            holder.letter.setVisibility(View.VISIBLE);
+        } else if (list.get(position - 1).getTag().equals(list.get(position).getTag())) {
+            holder.letter.setVisibility(View.GONE);
+        }else {
+            holder.letter.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
