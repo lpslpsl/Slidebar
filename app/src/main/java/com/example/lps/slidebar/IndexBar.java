@@ -27,11 +27,11 @@ public class IndexBar extends View {
             "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"};//字母
     int textSize;
     int pressBackground = Color.BLACK;//按下时候的颜色
-    private List<String> indexDatas;
-    Paint mPaint;
+    private List<String> indexDatas;//索引
+    Paint mPaint;//画笔
     private TextView hintTextView;//滑动时候显示的文字
-    private LinearLayoutManager layoutmanager;
-    private List<DataBean> souseData;
+    private LinearLayoutManager layoutmanager;//recycle的LayoutManager
+    private List<DataBean> souseData;//源数据
 
     public IndexBar(Context context) {
         this(context, null);
@@ -57,12 +57,12 @@ public class IndexBar extends View {
                     pressBackground = array.getColor(attr, Color.BLACK);
                     break;
             }
-        }
+        }//获取自定义属性
         array.recycle();
         indexDatas = Arrays.asList(INDEX_STRING);
         mPaint = new Paint();
         mPaint.setTextSize(textSize);
-        setListener(new OnIndexPressedListener() {
+        setListener(new OnIndexPressedListener() {//用户滑动的监听
             @Override
             public void onpressed(int position, String Letter) {
                 hintTextView.setVisibility(View.VISIBLE);
@@ -120,7 +120,7 @@ public class IndexBar extends View {
         setMeasuredDimension(measurewidth, measureheight);
     }
 
-    int mWidth, mHeight, mGapHeight;
+    int mWidth, mHeight, mGapHeight;//宽高，文字间隙
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
